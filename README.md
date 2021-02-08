@@ -1,6 +1,10 @@
 # MediaWiki
 Disability MediaWiki
 
+## Requirement 
+1. Docker machines
+2. Docker compose 
+
 # Docker commands
 ```javascript
     docker-compose up -d
@@ -24,4 +28,9 @@ You can change the user credintial details on `docker-compose.yml` file where en
 ssh -At broker@wdaqua.univ-st-etienne.fr dd07078u@disabilitywiki
 passord : password
 ```
+
+## References
+ [Configuration Reference](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
+
+ [Update Reference](hhttps://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
 
