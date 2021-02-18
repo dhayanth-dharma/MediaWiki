@@ -52,10 +52,12 @@ ssh -At broker@wdaqua.univ-st-etienne.fr dd07078u@disabilitywiki
 passord : password
 docker exec -i -t 6ef933df9481 /bin/bash | enter to shell
 docker cp 6ef933df9481:/var/www/html/LocalSettings.php . | Copy file
+docker cp 02c9a6dde3db:/wdqs/runUpdate.sh . | Copy run update file
 ```
-
 ## References
  [Configuration Reference](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
 
  [Update Reference](hhttps://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
+
+./runUpdate.sh -h http://$WDQS_HOST:$WDQS_PORT -- --wikibaseUrl $WIKIBASE_SCHEME://$WIKIBASE_HOST --conceptUri $WIKIBASE_SCHEME://$WIKIBASE_HOST --entityNamespaces $WDQS_ENTITY_NAMESPACES -s 1613401544000
 

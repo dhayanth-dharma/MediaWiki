@@ -17,14 +17,15 @@ $wgDBpassword = "sqlpass";
 
 ## Logs
 ## Save these logs inside the container
-$wgDebugLogGroups = [
+$wgDebugLogGroups = array(
 	'resourceloader' => '/var/log/mediawiki/resourceloader.log',
 	'exception' => '/var/log/mediawiki/exception.log',
 	'error' => '/var/log/mediawiki/error.log',
-];
+);
 
 ## Site Settings
 # TODO pass in the rest of this with env vars?
+$wgServer = WebRequest::detectServer();
 $wgShellLocale = "en_US.utf8";
 $wgLanguageCode = "en";
 $wgSitename = "wikibase-docker";
@@ -48,9 +49,7 @@ $wgRCMaxAge = 365 * 24 * 3600;
 wfLoadSkin( 'Vector' );
 
 ## Wikibase
-# Load Wikibase repo, client & lib with the example / default settings.
-require_once "$IP/extensions/Wikibase/vendor/autoload.php";
-require_once "$IP/extensions/Wikibase/lib/WikibaseLib.php";
+# Load Wikibase repo & client with the example / default settings.
 require_once "$IP/extensions/Wikibase/repo/Wikibase.php";
 require_once "$IP/extensions/Wikibase/repo/ExampleSettings.php";
 require_once "$IP/extensions/Wikibase/client/WikibaseClient.php";
@@ -62,18 +61,17 @@ $wgGroupPermissions['sysop']['mwoauthmanageconsumer'] = true;
 $wgGroupPermissions['sysop']['mwoauthviewprivate'] = true;
 $wgGroupPermissions['sysop']['mwoauthupdateownconsumer'] = true;
 
-$wgGroupPermissions['*']['edit'] = false;
-$wgGroupPermissions['*']['createaccount'] = false;
-
 # WikibaseImport
 require_once "$IP/extensions/WikibaseImport/WikibaseImport.php";
 
 # CirrusSearch
 wfLoadExtension( 'Elastica' );
-require_once "$IP/extensions/CirrusSearch/CirrusSearch.php";
+wfLoadExtension( 'CirrusSearch' );
+wfLoadExtension( 'WikibaseCirrusSearch' );
 $wgCirrusSearchServers = [ 'elasticsearch.svc' ];
 $wgSearchType = 'CirrusSearch';
 $wgCirrusSearchExtraIndexSettings['index.mapping.total_fields.limit'] = 5000;
+$wgWBCSUseCirrus = true;
 
 # UniversalLanguageSelector
 wfLoadExtension( 'UniversalLanguageSelector' );
@@ -81,5 +79,5 @@ wfLoadExtension( 'UniversalLanguageSelector' );
 # cldr
 wfLoadExtension( 'cldr' );
 
-# EntitySchema
+#EntitySchema
 wfLoadExtension( 'EntitySchema' );

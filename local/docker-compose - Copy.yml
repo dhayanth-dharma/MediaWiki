@@ -22,7 +22,7 @@ services:
     volumes:
       - mediawiki-images-data:/var/www/html/images
       - quickstatements-data:/quickstatements/data
-      - ./images/disabilityLogo.png:/var/www/html/resources/assets/wiki.png
+      - ./image/disabilityLogo.png:/var/www/html/resources/assets/wiki.png
     depends_on:
     - mysql
     - elasticsearch
