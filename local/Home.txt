@@ -1,0 +1,18 @@
+
+Welcome to the Disability Knowledge Graph!
+
+This graph contains structured information about the Disability and Human Rights. 
+
+You can find informations such as 
+
+* Disability Discrimination Article 1 (like the [http://localhost:8181/wiki/Item:Q28 Article 1] and the [http://localhost:8181/wiki/Item:Q141 Article 10])
+* different topics about Human Rights (like [http://localhost:8181/wiki/Item:Q19 Human Rights]  )
+
+
+The '''query service''' can be accessed under https://query.disabilitywiki.eu.
+
+The '''question answering service''' can be accessed under https://qa.disabilitywiki.eu.
+
+Exports of the '''data''' contained in the Disability Knowledge Graph can be accessed under https://data.disabilitywiki.eu. 
+
+New knowledge will be added continuously. If you are interested to collaborate, please contact us at [mailto:disability@google.ca].
