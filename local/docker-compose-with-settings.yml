@@ -22,8 +22,13 @@ services:
     volumes:
       - mediawiki-images-data:/var/www/html/images
       - quickstatements-data:/quickstatements/data
-      - ./images:/var/www/html/resources/assets/images 
+      # - ./images/disabilityLogo.png:/var/www/html/resources/assets/wiki.png
+      - ./images:/var/www/html/resources/assets/images
+      # - ./LocalSettings.php.template:/LocalSettings.php.template
+      # - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      # - ./LocalSettings.php:/var/www/html/LocalSettings.php.template
       - ./LocalSettings.php.template:/LocalSettings.php.template
+      # - ./LocalSettings.php:/var/www/html/LocalSettings.php
     depends_on:
     - mysql
     - elasticsearch
@@ -38,17 +43,18 @@ services:
       - MW_ELASTIC_HOST=elasticsearch.svc
       - MW_ELASTIC_PORT=9200
       # CONFIG - Change the default values below
-      # - MW_ADMIN_NAME=WikibaseAdmin
-      # - MW_ADMIN_PASS=WikibaseDockerAdminPass
-      # - MW_ADMIN_EMAIL=admin@example.com
-      # - MW_WG_SECRET_KEY=secretkey
+      - MW_ADMIN_NAME=WikibaseAdmin
+      - MW_ADMIN_PASS=WikibaseDockerAdminPass
+      - MW_ADMIN_EMAIL=admin@example.com
+      - MW_WG_SECRET_KEY=secretkey
       # CONFIG - Change the default values below (should match mysql values in this file)
-      # - DB_USER=wikiuser
-      # - DB_PASS=sqlpass
-      # - DB_NAME=my_wiki
+      - DB_USER=wikiuser
+      - DB_PASS=sqlpass
+      - DB_NAME=my_wiki
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-    env_file:
-      - services_secrets.env
+      # - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://10.115.0.198:9191
+   #  env_file:
+     #  - services_secrets.env 
   mysql:
     image: mariadb:10.3
     restart: unless-stopped
@@ -57,11 +63,11 @@ services:
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       # CONFIG - Change the default values below (should match values passed to wikibase)
-      # MYSQL_DATABASE: 'my_wiki'
-      # MYSQL_USER: 'wikiuser'
-      # MYSQL_PASSWORD: 'sqlpass'
-    env_file:
-      - mysql_secrets.env
+      MYSQL_DATABASE: 'my_wiki'
+      MYSQL_USER: 'wikiuser'
+      MYSQL_PASSWORD: 'sqlpass'
+    #  env_file:
+       #  - mysql_secrets.env
     networks:
       default:
         aliases:
@@ -93,9 +99,13 @@ services:
         aliases:
          - wdqs.svc
     environment:
-      - WIKIBASE_HOST=wikibase.svc
+      # - WIKIBASE_HOST=wikibase.svc
+      # - WIKIBASE_HOST=http://localhost:9191
+      - WIKIBASE_HOST=http://localhost:8181
+      # - WIKIBASE_SCHEME=http
       - WDQS_HOST=wdqs.svc
       - WDQS_PORT=9999
+      - HEAP_SIZE=8g
     expose:
       - 9999
   wdqs-proxy:
@@ -124,6 +134,8 @@ services:
          - wdqs-updater.svc
     environment:
      - WIKIBASE_HOST=wikibase.svc
+     # - WIKIBASE_HOST=http://localhost:8181
+     # - WIKIBASE_SCHEME=http
      - WDQS_HOST=wdqs.svc
      - WDQS_PORT=9999
   elasticsearch:
@@ -150,8 +162,10 @@ services:
         aliases:
          - quickstatements.svc
     environment:
+      # - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
+      # - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181
+      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181     
       - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
       - WB_PROPERTY_NAMESPACE=122
       - "WB_PROPERTY_PREFIX=Property:"

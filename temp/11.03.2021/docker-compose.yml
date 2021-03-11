@@ -38,17 +38,15 @@ services:
       - MW_ELASTIC_HOST=elasticsearch.svc
       - MW_ELASTIC_PORT=9200
       # CONFIG - Change the default values below
-      # - MW_ADMIN_NAME=WikibaseAdmin
-      # - MW_ADMIN_PASS=WikibaseDockerAdminPass
-      # - MW_ADMIN_EMAIL=admin@example.com
-      # - MW_WG_SECRET_KEY=secretkey
+      - MW_ADMIN_NAME=WikibaseAdmin
+      - MW_ADMIN_PASS=WikibaseDockerAdminPass
+      - MW_ADMIN_EMAIL=admin@example.com
+      - MW_WG_SECRET_KEY=secretkey
       # CONFIG - Change the default values below (should match mysql values in this file)
-      # - DB_USER=wikiuser
-      # - DB_PASS=sqlpass
-      # - DB_NAME=my_wiki
+      - DB_USER=wikiuser
+      - DB_PASS=sqlpass
+      - DB_NAME=my_wiki
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-    env_file:
-      - services_secrets.env
   mysql:
     image: mariadb:10.3
     restart: unless-stopped
@@ -57,11 +55,9 @@ services:
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       # CONFIG - Change the default values below (should match values passed to wikibase)
-      # MYSQL_DATABASE: 'my_wiki'
-      # MYSQL_USER: 'wikiuser'
-      # MYSQL_PASSWORD: 'sqlpass'
-    env_file:
-      - mysql_secrets.env
+      MYSQL_DATABASE: 'my_wiki'
+      MYSQL_USER: 'wikiuser'
+      MYSQL_PASSWORD: 'sqlpass'
     networks:
       default:
         aliases:
@@ -81,7 +77,6 @@ services:
     environment:
       - WIKIBASE_HOST=wikibase.svc
       - WDQS_HOST=wdqs-proxy.svc
-      - BRAND_TITLE=Disabillity Knowledge Graph Query Service
   wdqs:
     image: wikibase/wdqs:0.3.40
     restart: unless-stopped
