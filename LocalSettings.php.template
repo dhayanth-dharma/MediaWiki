@@ -26,8 +26,7 @@ ${DOLLAR}wgDebugLogGroups = array(
 ## Site Settings
 # TODO pass in the rest of this with env vars?
 ${DOLLAR}wgLogo = 'resources/assets/images/disabilityLogo.png';
-# ${DOLLAR}wgServer = "http://10.115.0.198:8181";
-
+${DOLLAR}wgServer = "http://disabilitywiki.univ-st-etienne.fr"; 
 
 ${DOLLAR}wgServer = WebRequest::detectServer();
 ${DOLLAR}wgShellLocale = "en_US.utf8";
