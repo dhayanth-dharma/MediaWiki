@@ -55,6 +55,18 @@ docker cp 6ef933df9481:/var/www/html/LocalSettings.php . | Copy file
 docker cp 02c9a6dde3db:/wdqs/runUpdate.sh . | Copy run update file
 docker cp 65f36684a7f5:/var/www/html/includes/DefaultSettings.php .
 ```
+
+## DOCKER COMMANDS
+```
+kill all running containers with docker kill $(docker ps -q)
+delete all stopped containers with docker rm $(docker ps -a -q)
+delete all images with docker rmi $(docker images -q)
+update and stop a container that is in a crash-loop with docker update --restart=no && docker stop
+bash shell into container docker exec -i -t /bin/bash - if bash is not available use /bin/sh
+bash shell with root if container is running in a different user context docker exec -i -t -u root /bin/bash
+
+```
+
 ## References
  [Configuration Reference](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
 
