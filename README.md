@@ -12,6 +12,7 @@ Disability MediaWiki
     docker-compose stop
     docker-compose down
     docker-compose down --volumes
+	docker rmi $(docker images -a -q)
 ``` 
 ## Wikibase-docker image details 
 
