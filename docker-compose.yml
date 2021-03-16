@@ -46,7 +46,7 @@ services:
       # - DB_USER=wikiuser
       # - DB_PASS=sqlpass
       # - DB_NAME=my_wiki
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://disabilitywiki.univ-st-etienne.fr:9191
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
     env_file:
       - services_secrets.env
   mysql:
@@ -154,7 +154,7 @@ services:
         aliases:
          - quickstatements.svc
     environment:
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://disabilitywiki.univ-st-etienne.fr:9191
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
       - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://disabilitywiki.univ-st-etienne.fr
       - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
       - WB_PROPERTY_NAMESPACE=122
