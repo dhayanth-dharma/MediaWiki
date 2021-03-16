@@ -93,9 +93,9 @@ services:
         aliases:
          - wdqs.svc
     environment:
-      - WIKIBASE_HOST=wikibase.svc
-      # - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
-      # - WIKIBASE_SCHEME=http
+      # - WIKIBASE_HOST=wikibase.svc
+      - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
+      - WIKIBASE_SCHEME=http
       - WDQS_HOST=wdqs.svc
       - WDQS_PORT=9999
     expose:
@@ -125,9 +125,9 @@ services:
         aliases:
          - wdqs-updater.svc
     environment:
-     - WIKIBASE_HOST=wikibase.svc
-     # - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
-     # - WIKIBASE_SCHEME=http
+     # - WIKIBASE_HOST=wikibase.svc
+     - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
+     - WIKIBASE_SCHEME=http
      - WDQS_HOST=wdqs.svc
      - WDQS_PORT=9999
   elasticsearch:
