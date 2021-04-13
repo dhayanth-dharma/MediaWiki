@@ -50,7 +50,7 @@ You can change the user credintial details on `docker-compose.yml` file where en
 ## SSH COMMANDS
 ```
 ssh -At broker@wdaqua.univ-st-etienne.fr dd07078u@diswiki
-passord : password
+passord : 
 docker exec -i -t 6ef933df9481 /bin/bash | enter to shell
 docker cp 6ef933df9481:/var/www/html/LocalSettings.php . | Copy file
 docker cp 02c9a6dde3db:/wdqs/runUpdate.sh . | Copy run update file
