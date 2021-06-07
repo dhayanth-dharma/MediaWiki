@@ -26,7 +26,7 @@ ${DOLLAR}wgDebugLogGroups = array(
 ## Site Settings
 # TODO pass in the rest of this with env vars?
 ${DOLLAR}wgLogo = 'resources/assets/images/disabilityLogo.png';
-${DOLLAR}wgServer = "http://disabilitywiki.univ-st-etienne.fr"; 
+${DOLLAR}wgServer = "https://disabilitywiki.univ-st-etienne.fr"; 
 
 # ${DOLLAR}wgServer = WebRequest::detectServer();
 ${DOLLAR}wgShellLocale = "en_US.utf8";
@@ -63,6 +63,10 @@ require_once "${DOLLAR}IP/extensions/Wikibase/client/ExampleSettings.php";
 
 #Allowing file upload
 ${DOLLAR}wgEnableUploads = true; # Enable uploads
+
+# UniversalLanguageSelector
+wfLoadExtension( 'UniversalLanguageSelector' );
+
 #change charactor limit
 # ${DOLLAR}wgWBRepoSettings['multilang-limits']=1500;
 ${DOLLAR}wgWBRepoSettings['string-limits'] = array (

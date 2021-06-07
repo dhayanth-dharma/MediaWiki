@@ -24,6 +24,9 @@ services:
       - quickstatements-data:/quickstatements/data
       - ./images:/var/www/html/resources/assets/images 
       - ./LocalSettings.php.template:/LocalSettings.php.template
+      - ./script_QAnswer2.sh:/var/www/html/script_QAnswer2.sh
+      - ./qanswer_secrets.env:/var/www/html/qanswer_secretes.env
+      
     depends_on:
     - mysql
     - elasticsearch
@@ -95,7 +98,7 @@ services:
     environment:
       # - WIKIBASE_HOST=wikibase.svc
       - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
-      - WIKIBASE_SCHEME=http
+      - WIKIBASE_SCHEME=https
       - WDQS_HOST=wdqs.svc
       - WDQS_PORT=9999
     expose:
@@ -127,7 +130,7 @@ services:
     environment:
      # - WIKIBASE_HOST=wikibase.svc
      - WIKIBASE_HOST=disabilitywiki.univ-st-etienne.fr
-     - WIKIBASE_SCHEME=http
+     - WIKIBASE_SCHEME=https
      - WDQS_HOST=wdqs.svc
      - WDQS_PORT=9999
   elasticsearch:
@@ -155,7 +158,7 @@ services:
          - quickstatements.svc
     environment:
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://disabilitywiki.univ-st-etienne.fr
+      - WB_PUBLIC_SCHEME_HOST_AND_PORT=https://disabilitywiki.univ-st-etienne.fr
       - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
       - WB_PROPERTY_NAMESPACE=122
       - "WB_PROPERTY_PREFIX=Property:"

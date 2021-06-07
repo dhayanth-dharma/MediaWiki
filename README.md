@@ -65,8 +65,18 @@ delete all images with docker rmi $(docker images -q)
 update and stop a container that is in a crash-loop with docker update --restart=no && docker stop
 bash shell into container docker exec -i -t /bin/bash - if bash is not available use /bin/sh
 bash shell with root if container is running in a different user context docker exec -i -t -u root /bin/bash
+change_docker_path=C:\ProgramData\Docker\config
+docker system prune -a //DELETE ALL CONTAINERS
+docker images -a
+docker rmi Image Image
+docker rmi $(docker images -a -q)
 
 ```
+
+## Quick statements
+1. Create a application auth with http://localhost:8181/wiki/Special:OAuthConsumerRegistration
+2. Approve the request on http://localhost:8181/wiki/Special:OAuthManageConsumers/proposed
+3. call back url http://localhost:9191/api.php
 
 ## References
  [Configuration Reference](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
@@ -74,4 +84,5 @@ bash shell with root if container is running in a different user context docker 
  [Update Reference](hhttps://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
 
 ./runUpdate.sh -h http://$WDQS_HOST:$WDQS_PORT -- --wikibaseUrl $WIKIBASE_SCHEME://$WIKIBASE_HOST --conceptUri $WIKIBASE_SCHEME://$WIKIBASE_HOST --entityNamespaces $WDQS_ENTITY_NAMESPACES -s 1613401544000
+
 
