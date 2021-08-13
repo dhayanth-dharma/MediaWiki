@@ -24,8 +24,8 @@ services:
       - quickstatements-data:/quickstatements/data
       - ./images:/var/www/html/resources/assets/images 
       - ./LocalSettings.php.template:/LocalSettings.php.template
-      - ./script_QAnswer2.sh:/var/www/html/script_QAnswer2.sh
-      - ./qanswer_secrets.env:/var/www/html/qanswer_secretes.env
+      - ./script_QAnswer.sh:/var/www/html/script_QAnswer.sh
+      - ./qanswer_secretes.env:/var/www/html/qanswer_secretes.env
       
     depends_on:
     - mysql
