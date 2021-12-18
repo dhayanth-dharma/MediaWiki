@@ -10,6 +10,12 @@ Disability MediaWiki
 2. $sudo chmod +x script
 3. sudo script 
 
+## optional
+You can run script directly inside docker container by accesing it
+```bash
+    sudo docker exec -i -t 5afed752540b /bin/bash
+```
+change the docker id. (to see all docker id, type $docker ps)
 
 ## Docker commands
 ```javascript
