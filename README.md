@@ -8,7 +8,7 @@ Disability MediaWiki
 ## Start
 1. docker-compose up -d
 2. $sudo chmod +x script
-3. sudo script 
+3. sudo ./script 
 
 ## optional
 You can run script directly inside docker container by accesing it
